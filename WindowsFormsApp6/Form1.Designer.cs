@@ -75,6 +75,7 @@
             // 
             // Benzin
             // 
+            this.Benzin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Benzin.FormattingEnabled = true;
             this.Benzin.Items.AddRange(new object[] {
             "A-92",
@@ -291,18 +292,20 @@
             // 
             // KafeUmuniTextBox
             // 
-            this.KafeUmuniTextBox.Location = new System.Drawing.Point(66, 43);
+            this.KafeUmuniTextBox.Location = new System.Drawing.Point(36, 43);
+            this.KafeUmuniTextBox.Multiline = true;
             this.KafeUmuniTextBox.Name = "KafeUmuniTextBox";
             this.KafeUmuniTextBox.ReadOnly = true;
-            this.KafeUmuniTextBox.Size = new System.Drawing.Size(100, 20);
+            this.KafeUmuniTextBox.Size = new System.Drawing.Size(130, 44);
             this.KafeUmuniTextBox.TabIndex = 17;
             // 
             // BenzinUmumTextBox
             // 
-            this.BenzinUmumTextBox.Location = new System.Drawing.Point(150, 37);
+            this.BenzinUmumTextBox.Location = new System.Drawing.Point(123, 19);
+            this.BenzinUmumTextBox.Multiline = true;
             this.BenzinUmumTextBox.Name = "BenzinUmumTextBox";
             this.BenzinUmumTextBox.ReadOnly = true;
-            this.BenzinUmumTextBox.Size = new System.Drawing.Size(121, 20);
+            this.BenzinUmumTextBox.Size = new System.Drawing.Size(211, 50);
             this.BenzinUmumTextBox.TabIndex = 8;
             this.BenzinUmumTextBox.TextChanged += new System.EventHandler(this.BenzinUmumTextBox_TextChanged);
             // 
@@ -420,11 +423,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(212, 46);
+            this.label8.Location = new System.Drawing.Point(141, 74);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(25, 13);
             this.label8.TabIndex = 9;
             this.label8.Text = "Azn";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // Cem
             // 

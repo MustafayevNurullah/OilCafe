@@ -17,6 +17,9 @@ namespace WindowsFormsApp6
         public Form1()
         {
             InitializeComponent();
+            BenzinUmumTextBox.Font = new Font("Calibri", 20);
+            KafeUmuniTextBox.Font = new Font("Calibri", 20);
+            UmumiTextBox.Font = new Font("Calibri", 20);
             LitrTextBox.Enabled = false;
          QiymetTextBox.Enabled = false;
             HotDoqSayTB.Enabled = false;
@@ -27,6 +30,7 @@ namespace WindowsFormsApp6
             HamburgerQitmetTB.Text = "5.40";
             KartofQiymetTB.Text = "7.20";
             KolaQiymetTB.Text = "1.00";
+            
         }
 
         private void LitrRB_CheckedChanged(object sender, EventArgs e)
@@ -68,7 +72,7 @@ namespace WindowsFormsApp6
             {
                 if(KafeUmuniTextBox.Text!=string.Empty)
                 {
-                    double q = Convert.ToDouble(HotdoqQiymetTB.Text) * Convert.ToDouble(HotDoqSayTB.Text);
+                    double q = Convert.ToDouble(4.00 * Convert.ToDouble(HotDoqSayTB.Text));
                     KafeUmuniTextBox.Text =Convert.ToString( Convert.ToDouble(KafeUmuniTextBox.Text) - q);
                 }
                 HotDoqSayTB.Text = string.Empty;
@@ -87,7 +91,7 @@ namespace WindowsFormsApp6
             {
                 if (KafeUmuniTextBox.Text != string.Empty)
                 {
-                    double q = Convert.ToDouble(HamburgerQitmetTB.Text) * Convert.ToDouble(HamburgerSayTB.Text);
+                    double q =Convert.ToDouble( 5.40 * Convert.ToDouble(HamburgerSayTB.Text));
                     KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KafeUmuniTextBox.Text) - q);
                 }
                 HamburgerSayTB.Text = string.Empty;
@@ -106,7 +110,7 @@ namespace WindowsFormsApp6
             {
                 if (KartofSayTB.Text != string.Empty)
                 {
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KafeUmuniTextBox.Text) - Convert.ToDouble(KartofQiymetTB.Text) * Convert.ToDouble(KartofSayTB.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KafeUmuniTextBox.Text) - 7.20 * Convert.ToDouble(KartofSayTB.Text));
                 }
                 KartofSayTB.Text = string.Empty;
                 KartofSayTB.Enabled = false;
@@ -123,7 +127,7 @@ namespace WindowsFormsApp6
             {
                 if (KafeUmuniTextBox.Text != string.Empty)
                 {
-                    double q = Convert.ToDouble(KolaQiymetTB.Text) * Convert.ToDouble(KolaSayTB.Text);
+                    double q = Convert.ToDouble(1.00) * Convert.ToDouble(KolaSayTB.Text);
                     KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KafeUmuniTextBox.Text) - q);
                 }
                 KolaSayTB.Text = string.Empty;
@@ -181,10 +185,9 @@ namespace WindowsFormsApp6
             double b;
 
             bool a = double.TryParse(LitrTextBox.Text, out b);
-            if (a)
+            bool q=Int32.TryParse(LitrTextBox.Text,out)
+            if ( a & q>0)
             {
-
-
                 switch (Benzin.Text)
                 {
 
@@ -229,7 +232,8 @@ namespace WindowsFormsApp6
             double b;
 
             bool a = double.TryParse(BenzinQiymeyTextBox.Text, out b);
-            if (a)
+            int B = Convert.ToInt32(BenzinQiymeyTextBox.Text);
+            if (a & b>0)
             {
 
 
@@ -241,17 +245,19 @@ namespace WindowsFormsApp6
             int b;
            
             bool a = Int32.TryParse(HotDoqSayTB.Text, out b);
-            if (a)
+            
+            if (a | Convert.ToInt32( HotDoqSayTB.Text)>0)
             {
+                
                 if (HamburgerCB.Checked | KartofCB.Checked | KolaCB.Checked)
                 {
                     
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(HotdoqQiymetTB.Text) * Convert.ToDouble(HotDoqSayTB.Text)+Convert.ToDouble(KafeUmuniTextBox.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(4.00 * Convert.ToDouble(HotDoqSayTB.Text)+Convert.ToDouble(KafeUmuniTextBox.Text));
 
                 }
                 else
                 {
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(HotdoqQiymetTB.Text) * Convert.ToDouble(HotDoqSayTB.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(4.00 * Convert.ToDouble(HotDoqSayTB.Text));
 
                 }
             }
@@ -265,17 +271,17 @@ namespace WindowsFormsApp6
         {
             int b;
             bool a = Int32.TryParse(HamburgerSayTB.Text, out b);
-            if (a)
+            if (a | Convert.ToInt32(HamburgerSayTB.Text)>0)
             {
                 if (HotdoqCB.Checked | KartofCB.Checked | KolaCB.Checked)
                 {
 
 
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(HamburgerQitmetTB.Text) * Convert.ToDouble(HamburgerSayTB.Text)+Convert.ToDouble(KafeUmuniTextBox.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(5.40 * Convert.ToDouble(HamburgerSayTB.Text)+Convert.ToDouble(KafeUmuniTextBox.Text));
                 }
                 else
                 {
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(HamburgerQitmetTB.Text) * Convert.ToDouble(HamburgerSayTB.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(5.40 * Convert.ToDouble(HamburgerSayTB.Text));
 
                 }
                 {
@@ -295,17 +301,17 @@ namespace WindowsFormsApp6
         {
             int b;
             bool a = Int32.TryParse(KartofSayTB.Text, out b);
-            if (a)
+            if (a | Convert.ToInt32(KartofSayTB.Text)>0 )
             {
                 if (HotdoqCB.Checked | HamburgerCB.Checked | KolaCB.Checked)
                 {
 
 
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KartofQiymetTB.Text) * Convert.ToDouble(KartofSayTB.Text)+Convert.ToDouble(KafeUmuniTextBox.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(7.20 * Convert.ToDouble(KartofSayTB.Text)+Convert.ToDouble(KafeUmuniTextBox.Text));
                 }
                 else
                 {
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KartofQiymetTB.Text) * Convert.ToDouble(KartofSayTB.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(7.20 * Convert.ToDouble(KartofSayTB.Text));
 
                 }
             }
@@ -319,17 +325,17 @@ namespace WindowsFormsApp6
         {
             int b;
             bool a = Int32.TryParse(KolaSayTB.Text, out b);
-            if (a)
+            if (a | Convert.ToInt32(KolaSayTB)>0)
             {
                 if (HamburgerCB.Checked | HotdoqCB.Checked | KartofCB.Checked)
                 {
 
 
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KolaQiymetTB.Text) * Convert.ToDouble(KolaSayTB.Text) + Convert.ToDouble(KafeUmuniTextBox.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(1.00 * Convert.ToDouble(KolaSayTB.Text) + Convert.ToDouble(KafeUmuniTextBox.Text));
                 }
                 else
                 {
-                    KafeUmuniTextBox.Text = Convert.ToString(Convert.ToDouble(KolaQiymetTB.Text) * Convert.ToDouble(KolaSayTB.Text));
+                    KafeUmuniTextBox.Text = Convert.ToString(1.00 * Convert.ToDouble(KolaSayTB.Text));
 
                 }
             }
@@ -391,6 +397,11 @@ namespace WindowsFormsApp6
             oilCafe.UmumiQiymet = UmumiTextBox.Text;
             string json = JsonConvert.SerializeObject(oilCafe);
             System.IO.File.WriteAllText($"Cek{counter++}.json", json);
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
     class OilCafe
