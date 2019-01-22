@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace WindowsFormsApp6
 {
     public partial class Form1 : Form
     {
+        public int counter { get; set; } = 1;
         public Form1()
         {
             InitializeComponent();
@@ -340,12 +342,42 @@ namespace WindowsFormsApp6
         private void OK_Click(object sender, EventArgs e)
         {
             OilCafe oilCafe = new OilCafe();
-            if (BenzinUmumTextBox.Text == string.Empty & KafeUmuniTextBox.Text != string.Empty)
+            if (HotdoqCB.Checked)
+            {
+                oilCafe.Hotdoq = HotdoqCB.Text;
+                oilCafe.HotdoqQiymeti = HotdoqQiymetTB.Text;
+                oilCafe.HotdoqSay = HotDoqSayTB.Text;
+            }
+            if (HamburgerCB.Checked)
+            {
+                oilCafe.Hamburger = HamburgerCB.Text;
+                oilCafe.HamburgerQiymet = HamburgerQitmetTB.Text;
+                oilCafe.HamburgerSay = HamburgerSayTB.Text;
+            }
+            if (KartofCB.Checked)
+            {
+                oilCafe.Kartof = KartofCB.Text;
+                oilCafe.KartofQiymet = KartofQiymetTB.Text;
+                oilCafe.KartofSay = KartofSayTB.Text;
+            }
+
+            if (KolaCB.Checked)
+            {
+                oilCafe.Kartof = KartofCB.Text;
+                oilCafe.KolaQiymet = KolaQiymetTB.Text;
+                oilCafe.KolaSay = KolaSayTB.Text;
+
+            }
+            if (Benzin.Text != string.Empty & BenzinUmumTextBox.Text != string.Empty)
             {
                 oilCafe.Benzin = Benzin.Text;
-                oilCafe.BenzinQiymet =  BenzinUmumTextBox.Text;
+                oilCafe.BenzinQiymet = BenzinUmumTextBox.Text;
+
+            }
+            if (BenzinUmumTextBox.Text == string.Empty & KafeUmuniTextBox.Text != string.Empty)
+            {
                 UmumiTextBox.Text = KafeUmuniTextBox.Text;
-                oilCafe.UmumiQiymet = UmumiTextBox.Text;
+
             }
             if (BenzinUmumTextBox.Text != string.Empty & KafeUmuniTextBox.Text == string.Empty)
             {
@@ -354,9 +386,11 @@ namespace WindowsFormsApp6
             if (BenzinUmumTextBox.Text != string.Empty & KafeUmuniTextBox.Text != string.Empty)
             {
 
-
                 UmumiTextBox.Text = Convert.ToString(Convert.ToDouble(BenzinUmumTextBox.Text) + Convert.ToDouble(KafeUmuniTextBox.Text)).ToString();
             }
+            oilCafe.UmumiQiymet = UmumiTextBox.Text;
+            string json = JsonConvert.SerializeObject(oilCafe);
+            System.IO.File.WriteAllText($"Cek{counter++}.json", json);
         }
     }
     class OilCafe
